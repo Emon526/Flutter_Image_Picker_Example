@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Image Picker Example',
       home: MyHomePage(),
     );
@@ -57,13 +58,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 : ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: kIsWeb
-                        ? Image.memory(
-                            webImage,
-                            fit: BoxFit.fill,
+                        ? Center(
+                            child: Image.memory(
+                              webImage,
+                              fit: BoxFit.fill,
+                            ),
                           )
-                        : Image.file(
-                            _pickedImage!,
-                            fit: BoxFit.fill,
+                        : Center(
+                            child: Image.file(
+                              _pickedImage!,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                   ),
           ),
